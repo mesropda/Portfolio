@@ -1,0 +1,65 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .btn-wallet {
+        background-color: rgb(211, 206, 206);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 22px;
+        color: black;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .btn-wallet:hover {
+        background-color: grey;
+    }
+
+    .transaction {
+
+        width: 80%;
+        float: right;
+        margin-top: 32px;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: row;
+
+    }
+</style>
+<br>
+<h1 class="welcome-txt">Welcome to Dashboard page</h1>
+{%if messages%}
+<br>
+{% for message in messages %}
+<div class="message_alert" role="alert">
+    {{message}}
+    <br>
+</div>
+{% endfor %}
+{%endif%}
+
+<div class="transaction">
+    <button class="btn-wallet" type="submit">Add an expense</button>
+    <br>
+
+</div>
+
+{% include 'sidebar.html' %}
+
+<div id="expense-form">
+
+</div>
+
+
+<div class="my-4">
+    <button type="button" class="btn btn-success me-2" hx-get="{% url 'expenses:add-expense' %}"
+        hx-target="#expense-form" hx-swap="beforeend">+Add expense</button>
+</div>
+
+{%endblock%}

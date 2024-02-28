@@ -1,0 +1,58 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<style>
+    .form_textarea {
+        resize: none;
+        font-size: 14px;
+        font-family: Verdana;
+        resize: vertical;
+        overflow: auto;
+        width: 98%;
+        min-height: 120px;
+        display: block;
+        padding: 10px;
+        border-radius: 15px;
+        border: 1px solid white;
+    }
+</style>
+
+<h1 class="welcome-txt">Welcome to Contact Us Page</h1>
+{%if messages%}
+<br>
+{% for message in messages %}
+<div class="message_alert" role="alert">
+    {{message}}
+    <br>
+</div>
+{% endfor %}
+{%endif%}
+<div class="contact-div">
+    <br>
+    <form method="POST" class="form_login">{%csrf_token%}
+        <label class="form-label" for="">First Name</label>
+        <br>
+        <input class="form_input" type="text" placeholder="First Name" name="first_name">
+        <br>
+        <br>
+        <label class="form-label" for="">Last Name</label>
+        <br>
+        <input class="form_input" type="text" placeholder="Last Name" name="last_name">
+        <br>
+        <br>
+        <label class="form-label" for="">Email</label>
+        <br>
+        <input class="form_input" type="email" placeholder="Email" name="email">
+        <br>
+        <br>
+        <label class="form-label" for="">Message</label>
+        <br>
+        <textarea class="form_textarea" placeholder="Type your message here" resize="none" id=""
+            name="message"></textarea>
+        <br>
+        <br>
+        <button type="submit" class="btn">Send</button>
+    </form>
+
+</div>
+{%endblock%}

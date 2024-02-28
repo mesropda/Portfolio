@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Treacker Homepage</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/htmx.org@1.9.10"
+        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            width: 50vw;
+            border: 1px solid white;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Verdana;
+        }
+
+        body {
+            background-color: #0E1225;
+        }
+
+        .welcome-txt {
+            margin-left: 5px;
+            color: white;
+        }
+
+        .nav-el li a {
+            color: rgb(211, 206, 206);
+            text-decoration: none;
+            font-size: 20px;
+            font-family: Verdana;
+        }
+
+        .nav-el li {
+            float: left;
+            margin-right: 22px;
+            list-style-type: none;
+        }
+
+        .nav-el li a:hover {
+            color: white;
+        }
+
+        .message_alert {
+            background-color: #0E1225;
+            width: 390px;
+            height: 20px;
+            margin: auto;
+
+            color: #EF23AF;
+            font-size: 14px;
+            font-family: Verdana;
+        }
+
+        .btn {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 15px;
+            border: 1px solid #EF23AF;
+            background-color: #EF23AF;
+            font-weight: bold;
+            font-size: 19px;
+            color: white;
+            width: 100%;
+        }
+
+        .btn:hover {
+            cursor: pointer;
+            background-color: #EF1AEB;
+        }
+
+        .form_input {
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 15px;
+            border: 1px solid white;
+            font-size: 17px;
+            font-family: Verdana;
+            width: 98%;
+        }
+
+        .form_input_register {
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 15px;
+            border: 1px solid white;
+            font-size: 17px;
+            font-family: Verdana;
+            width: 50%;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-family: Verdana;
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <ul class="nav-el">
+                    <li><a href="{%url 'tracker:home'%}">Home Page</a></li>
+                    <li><a href="{%url 'tracker:contact-us'%}">Contact us</a></li>
+                    <li><a href="{%url 'tracker:about-us'%}">About us</a></li>
+                    {% if user.is_authenticated %}
+
+                    {% else %}
+                    <li><a href="{%url 'tracker:log-in'%}">Log In</a></li>
+                    {% endif%}
+                </ul>
+                <ul class="nav-el">
+                    {% if user.is_authenticated %}
+                    <li><a href="{%url 'tracker:profile'%}">MyProfile({{user.username}})</a></li>
+                    <li><a href="{%url 'expenses:index'%}">Dashboard</a></li>
+                    <li><a href="{%url 'tracker:log-out'%}">LogOut</a></li>
+
+                    {% endif%}
+                </ul>
+
+
+
+
+            </nav>
+        </header>
+        <br>
+        {%block content%}
+
+        {%endblock%}
+
+    </div>
+</body>
+
+</html>

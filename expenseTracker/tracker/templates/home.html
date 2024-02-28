@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<h1 class="welcome-txt">Welcome to Expense Tracker Home Page</h1>
+{%if messages%}
+<br>
+{% for message in messages %}
+<div class="message_alert" role="alert">
+    {{message}}
+    <br>
+</div>
+{% endfor %}
+{%endif%}
+
+{%endblock%}

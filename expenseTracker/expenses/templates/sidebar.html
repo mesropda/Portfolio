@@ -1,0 +1,33 @@
+<style>
+    .menu {
+        width: 17%;
+        border: 1px solid wheat;
+    }
+
+    .sidebar {
+        list-style-type: none;
+        padding: 0%;
+    }
+
+    .sidebar li a {
+        color: rgb(211, 206, 206);
+        text-decoration: none;
+        font-size: 20px;
+        font-family: Verdana;
+    }
+</style>
+<br>
+<div class="menu">
+    <aside>
+        <ul class="sidebar">
+            <hr />
+            <li> <a href="{%url 'expenses:index'%}">Dashboard</a> </li>
+            <hr />
+            <li> <a href="{%url 'expenses:monthly'%}">Monthly</a> </li>
+            <hr />
+            <li> <a href="{%url 'expenses:history'%}">History</a> </li>
+            <hr />
+        </ul>
+
+    </aside>
+</div>

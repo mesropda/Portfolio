@@ -1,0 +1,24 @@
+<form>
+    <div class="row">
+        <div class="col-4 col-md-3">
+            <label for="{{form.transaction_type.id_for_label}}">{{form.transaction_type.label}}</label>
+            {{form.transaction_type}}
+        </div>
+        <div class="col-4 col-md-3">
+            <label for="{{form.amount.id_for_label}}">{{form.amount.label}}</label>
+            {{form.amount}}
+        </div>
+        <div class="col-4 col-md-3">
+            <label for="{{form.category.id_for_label}}">{{form.category.label}}</label>
+            {{form.category}}
+        </div>
+        <div class="col-4 col-md-3">
+            <label for="{{form.source.id_for_label}}">{{form.source.label}}</label>
+            {{form.source}}
+        </div>
+        <div class="col-3 align-self-end">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+
+    </div>
+</form>

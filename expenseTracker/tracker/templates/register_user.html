@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<head>
+    <link rel="styles" href="styles.css">
+</head>
+
+<style>
+    .form_login {
+        width: 50vw;
+        height: 500px;
+        margin: auto;
+        font-size: 14px;
+        font-family: Verdana;
+        color: white;
+        /*border: 1px solid white;*/
+    }
+
+    .form_input {
+
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 16px;
+        font-family: Verdana;
+    }
+
+    .form-label {
+        font-size: 14px;
+        font-family: Verdana;
+        color: white;
+    }
+
+    .form-control {
+        font-size: 16px;
+        font-family: Verdana;
+    }
+</style>
+<h1 class="welcome-txt">Welcome to Registration Page!</h1>
+<br>
+{% if form.errors%}
+<div class="message_alert">
+    <p class="">There was en error with your submission, try again!</p>
+    <br />
+    <br />
+</div>
+{%endif%}
+
+
+<form action="{%url 'tracker:register'%}" method="POST" class="form_login">{%csrf_token%}
+    {{form.as_p}}
+    <br>
+
+    <button class="btn" type="submit">SIGN UP</button>
+
+</form>
+{%endblock%}

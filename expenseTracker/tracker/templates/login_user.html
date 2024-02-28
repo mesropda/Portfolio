@@ -1,0 +1,62 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .form_login {
+        width: 250px;
+        height: 380px;
+        margin: auto;
+        /*border: 1px solid white;*/
+    }
+
+
+
+    .register_link {
+
+        width: 200px;
+        height: 20px;
+        margin: auto;
+        font-size: 13px;
+        font-family: Verdana;
+    }
+
+    .register-label a {
+        color: #55F8B4;
+        text-decoration: none;
+    }
+
+    .register-label:hover {
+        cursor: pointer;
+    }
+</style>
+<h1 class="welcome-txt">Welcome to Login Page!</h1>
+<br>
+<div class="register_link">
+    <label class="register-label" for=""><a href="{%url 'tracker:register'%}">Not a member? Register here!</a></label>
+</div>
+
+{%if messages%}
+<br>
+{% for message in messages %}
+<div class="message_alert" role="alert">
+    {{message}}
+    <br>
+</div>
+{% endfor %}
+{%endif%}
+<form method="POST" class="form_login">{%csrf_token%}
+    <br>
+    <div>
+        <label class="form-label" for="">Username</label>
+        <br>
+        <input class="form_input" placeholder="UserName" type="text" name="username">
+        <br>
+        <br>
+        <label class="form-label" for="">Password</label>
+        <input class="form_input" placeholder="Password" type="password" name="password">
+        <br> <br>
+        <button class="btn" type="submit">LOG IN</button>
+    </div>
+</form>
+{%endblock%}
