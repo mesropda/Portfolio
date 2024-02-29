@@ -2,8 +2,14 @@
 
 {%block content%}
 
-
+<style>
+    .table-div {
+        margin-left: auto;
+        margin-top: -223px;
+        width: 70%;
+    }
 </style>
+
 <br>
 <h1 class="welcome-txt">Welcome to History page</h1>
 {%if messages%}
@@ -17,5 +23,11 @@
 {%endif%}
 
 {% include 'sidebar.html' %}
+<div class="table-div">
+
+
+    {% include 'partials/vew_transactions_template.html'%}
+</div>
+
 
 {%endblock%}

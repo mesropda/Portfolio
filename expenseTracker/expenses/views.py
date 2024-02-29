@@ -10,8 +10,10 @@ from .models import Transactions
 
 
 def user_home_page(request):
+    user = check_if_user_loggedin(request)
+    user_transactions = Transactions.objects.filter(user=user)
     context = {'form': RegisterNewTransactionFrom(),
-               'transactions': Transactions.objects.all()}
+               'transactions': user_transactions.order_by('-id')[:10]}
     return render(request, "index.html", context)
 
 
@@ -20,7 +22,10 @@ def monthly_report(request):
 
 
 def history(request):
-    return render(request, "history.html", {})
+    user = check_if_user_loggedin(request)
+    context = {'transactions': Transactions.objects.filter(
+        user=user).order_by('-id')}
+    return render(request, "history.html", context)
 
 
 def add_expense(request):
@@ -36,3 +41,10 @@ def add_expense(request):
             return render(request, 'partials/transaction.html', context)
 
     return render(request, 'partials/form.html', {'form': RegisterNewTransactionFrom()})
+
+
+def vew_user_transactions(request):
+    user = check_if_user_loggedin(request)
+    context = {'transactions': Transactions.objects.filter(
+        user=user).order_by('-id')}
+    return render(request, "vew_transactions_template.html", context)

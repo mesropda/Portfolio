@@ -1,15 +1,16 @@
 <style>
     .menu {
         width: 17%;
-        border: 1px solid wheat;
+        border: 1px solid white;
     }
 
-    .sidebar {
+    .sidebar11 {
         list-style-type: none;
-        padding: 0%;
+        padding: 0;
+
     }
 
-    .sidebar li a {
+    .sidebar11 li a {
         color: rgb(211, 206, 206);
         text-decoration: none;
         font-size: 20px;
@@ -18,16 +19,15 @@
 </style>
 <br>
 <div class="menu">
-    <aside>
-        <ul class="sidebar">
-            <hr />
-            <li> <a href="{%url 'expenses:index'%}">Dashboard</a> </li>
-            <hr />
-            <li> <a href="{%url 'expenses:monthly'%}">Monthly</a> </li>
-            <hr />
-            <li> <a href="{%url 'expenses:history'%}">History</a> </li>
-            <hr />
-        </ul>
 
-    </aside>
+    <ul class="sidebar11">
+        <hr />
+        <li> <a href="{%url 'expenses:index'%}">Dashboard</a> </li>
+        <hr />
+        <li> <a href="{%url 'expenses:monthly'%}">Monthly</a> </li>
+        <hr />
+        <li> <a href="{%url 'expenses:history'%}">History</a> </li>
+        <hr />
+    </ul>
+
 </div>
