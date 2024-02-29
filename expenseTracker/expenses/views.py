@@ -10,9 +10,9 @@ from .models import Transactions
 
 
 def user_home_page(request):
-    # context = {'form': RegisterNewTransactionFrom()}
-    # return render(request, 'index.html', context)
-    return render(request, "index.html", {})
+    context = {'form': RegisterNewTransactionFrom(),
+               'transactions': Transactions.objects.all()}
+    return render(request, "index.html", context)
 
 
 def monthly_report(request):
@@ -26,10 +26,13 @@ def history(request):
 def add_expense(request):
     if request.method == 'POST':
         user = check_if_user_loggedin(request)
-    return render(request, 'partials/form.html', {'form': RegisterNewTransactionFrom()})
+        form = RegisterNewTransactionFrom(request.POST or None)
+        if form.is_valid():
+            new_transaction = Transactions(
+                transaction_type=form.cleaned_data['transaction_type'], amount=form.cleaned_data['amount'], category=form.cleaned_data['category'], source=form.cleaned_data['source'])
+            new_transaction.user = user
+            new_transaction.save()
+            context = {'transaction': new_transaction}
+            return render(request, 'partials/transaction.html', context)
 
-    # if user.username == "edagmes":
-    #     messages.success(
-    #         request, "Your ae the admin user and cen't add en expense ")
-    # else:
-    #     new_transaction = Transactions()
+    return render(request, 'partials/form.html', {'form': RegisterNewTransactionFrom()})

@@ -39,4 +39,4 @@ class RegisterNewTransactionFrom(forms.ModelForm):
 
     class Meta:
         model = Transactions
-        fields = "__all__"
+        fields = ('transaction_type', 'amount', 'amount', 'source')
