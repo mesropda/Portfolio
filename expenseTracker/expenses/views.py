@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.contrib import messages
 from .forms import RegisterNewTransactionFrom
-
+from django.core.paginator import Paginator
 
 from tracker.views import check_if_user_loggedin
 from .models import Transactions
+from .filters import TransactionFilter
 
 # Create your views here.
 
@@ -23,8 +24,18 @@ def monthly_report(request):
 
 def history(request):
     user = check_if_user_loggedin(request)
-    context = {'transactions': Transactions.objects.filter(
-        user=user).order_by('-id')}
+    transactions = Transactions.objects.filter(
+        user=user)
+    transactions_filtered = TransactionFilter(
+        request.GET, queryset=transactions)
+    # paginator = Paginator(Transactions.objects.filter(
+    #     user=user).order_by('-id'), 15)
+    # page_number = request.GET.get('page')
+    # page_obj = Paginator.get_page(paginator, page_number)
+    # context = {'transactions': page_obj}
+    context = {'form': transactions_filtered.form,
+               'transactions': transactions_filtered.qs.order_by('-id')}
+
     return render(request, "history.html", context)
 
 

@@ -39,4 +39,9 @@ class RegisterNewTransactionFrom(forms.ModelForm):
 
     class Meta:
         model = Transactions
-        fields = ('transaction_type', 'amount', 'amount', 'source')
+        fields = ('transaction_type', 'amount', 'category', 'source')
+
+
+# class TransactionFilterForm(forms.Form):
+#     transaction_type = forms.ChoiceField(choices=TRANSACTION_CHOICES, widget=forms.Select(
+#         attrs={'class': 'form_input_register'}))

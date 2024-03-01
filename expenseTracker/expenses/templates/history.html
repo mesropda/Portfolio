@@ -5,7 +5,13 @@
 <style>
     .table-div {
         margin-left: auto;
-        margin-top: -223px;
+        margin-top: 10px;
+        width: 80%;
+    }
+
+    .search-div {
+        margin-left: auto;
+        margin-top: -207px;
         width: 70%;
     }
 </style>
@@ -23,10 +29,19 @@
 {%endif%}
 
 {% include 'sidebar.html' %}
+
+<div class="search-div">
+    <form method="GET" action="{% url 'expenses:history' %}">{%csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="Filter" class="btn">
+    </form>
+
+</div>
+
 <div class="table-div">
 
-
     {% include 'partials/vew_transactions_template.html'%}
+
 </div>
 
 

@@ -1,33 +1,39 @@
 <style>
     .menu {
-        width: 17%;
-        border: 1px solid white;
+        width: 15%;
+        /*border: 1px solid white;*/
     }
 
-    .sidebar11 {
+    .sidebar-ul {
         list-style-type: none;
         padding: 0;
 
     }
 
-    .sidebar11 li a {
+    .sidebar-ul a {
         color: rgb(211, 206, 206);
         text-decoration: none;
         font-size: 20px;
         font-family: Verdana;
+        padding: 0;
+    }
+
+    .hr {
+        color: white;
+
     }
 </style>
 <br>
 <div class="menu">
 
-    <ul class="sidebar11">
-        <hr />
+    <ul class="sidebar-ul">
+        <hr class="hr">
         <li> <a href="{%url 'expenses:index'%}">Dashboard</a> </li>
-        <hr />
+        <hr class="hr">
         <li> <a href="{%url 'expenses:monthly'%}">Monthly</a> </li>
-        <hr />
+        <hr class="hr">
         <li> <a href="{%url 'expenses:history'%}">History</a> </li>
-        <hr />
-    </ul>
+        <hr class="hr">
 
+    </ul>
 </div>

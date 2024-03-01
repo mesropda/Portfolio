@@ -44,29 +44,30 @@
 {% endfor %}
 {%endif%}
 
-< <div class="transaction">
+<div class="transaction">
     <button class="btn-wallet" type="button" hx-get="{% url 'expenses:add-expense' %}" hx-target="#expense-form"
         hx-swap="beforeend">Add an expense</button>
     <br>
 
-    </div>
+</div>
 
-    {% include 'sidebar.html' %}
+{% include 'sidebar.html' %}
 
-    <div id="expense-form">
-        {% include 'partials/form.html' %}
-    </div>
+<div id="expense-form">
+    {% include 'partials/form.html' %}
+</div>
 
 
-    <div class="my-4">
-        <br>
-        <button type="button" class="btn btn-primary" id="add-all">Add All</button>
-    </div>
+<div class="my-4">
+    <br>
+    <button type="button" class="btn btn-primary" id="add-all">Add All</button>
+</div>
 
-    <ul id="transaction-list">
-        {% for transaction in transactions %}
-        {% include 'partials/transaction.html' %}
-        {% endfor %}
-    </ul>
+<ul id="transaction-list">
+    {% for transaction in transactions %}
 
-    {%endblock%}
+    {% include 'partials/transaction.html' %}
+    {% endfor %}
+</ul>
+
+{%endblock%}

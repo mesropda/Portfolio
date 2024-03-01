@@ -1,4 +1,4 @@
-<form hx-post="{% url 'expenses:add-expense' %}" hx-target="#transaction-list" hx-swap="beforeend"
+<form hx-post="{% url 'expenses:add-expense' %}" hx-target="#transaction-list" hx-swap="afterbegin"
     hx-on="htmx:afterRequest: this.remove()" hx-trigger="click from:#add-all">{%csrf_token%}
     <div class="row">
         <div class="col-4 col-md-3">
