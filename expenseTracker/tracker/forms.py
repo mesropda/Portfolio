@@ -7,7 +7,7 @@ from django import forms
 class RegisterUserForm(UserCreationForm):
 
     PROFESSION_CHOICES = (
-        ("", ""),
+        ("-------", "-------"),
         ("Employee", "Employee"),
         ("Business", "Business"),
         ("Student", "Student"),

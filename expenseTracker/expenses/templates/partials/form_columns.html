@@ -1,0 +1,49 @@
+{% load widget_tweaks %}
+
+<style>
+    .div-col {
+        width: 50%;
+        list-style-type: none;
+        float: left;
+        text-align: left;
+    }
+
+    .div-col2 {
+        width: 50%;
+        list-style-type: none;
+        float: left;
+        text-align: left;
+    }
+
+
+    .div-col li {
+        float: left;
+        margin-right: 8%;
+    }
+
+    .div-col2 li {
+        float: left;
+        margin-right: 21%;
+    }
+
+    .inline1 {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+
+<br>
+<div class="inline1">
+    <div class=" div-col ">
+        <li class="form-label">{{form.transaction_type.label}}</li>
+        <li class="form-label">{{form.amount.label}}</li>
+
+    </div>
+
+    <div class=" div-col2 ">
+        <li class="form-label">{{form.category.label}}</li>
+        <li class="form-label">{{form.source.label}}</li>
+    </div>
+</div>
+
+<br>

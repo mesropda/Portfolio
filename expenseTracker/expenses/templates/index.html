@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block content%}
-
+{% load widget_tweaks %}
 <style>
     .btn-wallet {
         background-color: rgb(211, 206, 206);
@@ -21,15 +21,33 @@
         background-color: grey;
     }
 
-    .transaction {
+    .index-div {
+        margin-left: auto;
+        margin-top: -45px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
 
+    .index-div-col {
+        margin-left: auto;
+        margin-top: -170px;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .transaction {
         width: 80%;
         float: right;
-        margin-top: 32px;
-        border: 1px solid white;
+        margin-top: 38px;
         display: flex;
         flex-direction: row;
+    }
 
+    .div-recent-expenses {
+        width: 80%;
+        margin-left: auto;
+        list-style-type: none;
+        text-align: center;
     }
 </style>
 <br>
@@ -53,21 +71,25 @@
 
 {% include 'sidebar.html' %}
 
-<div id="expense-form">
+<div class="index-div-col">
+    {% include 'partials/form_columns.html' %}
+</div>
+
+<div class="index-div" id="expense-form">
     {% include 'partials/form.html' %}
 </div>
 
 
 <div class="my-4">
     <br>
-    <button type="button" class="btn btn-primary" id="add-all">Add All</button>
+    <button type="button" class="btn btn_size_80 btn_align_right btn-color-green" id="add-all">Add All</button>
 </div>
-
-<ul id="transaction-list">
-    {% for transaction in transactions %}
-
-    {% include 'partials/transaction.html' %}
-    {% endfor %}
-</ul>
-
+<br>
+<div class="div-recent-expenses">
+    <ul class="form-label " id="transaction-list">
+        {% for transaction in transactions %}
+        {% include 'partials/transaction.html' %}
+        {% endfor %}
+    </ul>
+</div>
 {%endblock%}

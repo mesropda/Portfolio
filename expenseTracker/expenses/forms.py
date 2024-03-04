@@ -3,6 +3,7 @@ from .models import Transactions
 
 
 EXPENSE_CATEGORY_CHOICES = (
+    ("--------", "--------"),
     ("House", "House"),
     ("Food", "Food"),
     ("Transport", "Transport"),
@@ -14,6 +15,7 @@ EXPENSE_CATEGORY_CHOICES = (
 )
 
 SOURCE_CHOICES = (
+    ("--------", "--------"),
     ("My account", "My account"),
     ("Salary", "Salary"),
     ("Gov_Social", "Gov_Social"),
@@ -22,6 +24,7 @@ SOURCE_CHOICES = (
 )
 
 TRANSACTION_CHOICES = (
+    ("--------", "--------"),
     ("Deposit", "Deposit"),
     ("Withdrawal", "Withdrawal"),
 )

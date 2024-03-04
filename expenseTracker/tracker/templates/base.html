@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,20 +70,72 @@
             padding-top: 5px;
             padding-bottom: 5px;
             border-radius: 15px;
-            border: 1px solid #EF23AF;
-            background-color: #EF23AF;
+            cursor: pointer;
             font-weight: bold;
             font-size: 19px;
-            color: white;
+        }
+
+        .btn-small {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            border: 1px solid red;
+        }
+
+        .btn-color-green {
+            border: 1px solid #55F8B4;
+            background-color: #55F8B4;
+            color: black;
+        }
+
+        .btn-color-pink {
+            border: 1px solid #EF23AF;
+            background-color: #EF23AF;
+        }
+
+        .btn-color-green:hover {
+
+            background-color: rgb(12, 229, 92)
+        }
+
+
+
+        .btn-color-pink {
+            border: 1px solid #EF23AF;
+            background-color: #EF23AF;
+        }
+
+        .btn_size_100 {
             width: 100%;
         }
 
-        .btn:hover {
-            cursor: pointer;
-            background-color: #EF1AEB;
+        .btn_size_80 {
+            width: 80%;
+        }
+
+        .btn_align_right {
+            float: right;
         }
 
         .form_input {
+            margin-top: 2px;
+            margin-bottom: 2px;
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            border-radius: 15px;
+            border: 1px solid white;
+            font-size: 17px;
+            font-family: Verdana;
+        }
+
+        .form_input_select {
             padding-right: 10px;
             padding-left: 10px;
             padding-top: 5px;
@@ -90,7 +144,10 @@
             border: 1px solid white;
             font-size: 17px;
             font-family: Verdana;
-            width: 98%;
+        }
+
+        .input_width_100 {
+            width: 100;
         }
 
         .form_input_register {
@@ -109,6 +166,16 @@
             font-size: 14px;
             font-family: Verdana;
             color: white;
+            list-style-type: none;
+        }
+
+        .helptext {
+            visibility: hidden;
+        }
+
+        .inline {
+            display: flex;
+            justify-content: space-around;
         }
     </style>
 </head>
