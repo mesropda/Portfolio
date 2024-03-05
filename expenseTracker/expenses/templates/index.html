@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block content%}
-{% load widget_tweaks %}
+
 <style>
     .btn-wallet {
         background-color: rgb(211, 206, 206);
@@ -79,11 +79,11 @@
     {% include 'partials/form.html' %}
 </div>
 
-
 <div class="my-4">
     <br>
     <button type="button" class="btn btn_size_80 btn_align_right btn-color-green" id="add-all">Add All</button>
 </div>
+
 <br>
 <div class="div-recent-expenses">
     <ul class="form-label " id="transaction-list">

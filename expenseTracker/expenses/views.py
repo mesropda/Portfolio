@@ -28,13 +28,12 @@ def history(request):
         user=user)
     transactions_filtered = TransactionFilter(
         request.GET, queryset=transactions)
-    # paginator = Paginator(Transactions.objects.filter(
-    #     user=user).order_by('-id'), 15)
-    # page_number = request.GET.get('page')
-    # page_obj = Paginator.get_page(paginator, page_number)
-    # context = {'transactions': page_obj}
+    paginator = Paginator(transactions_filtered.qs.order_by('-id'), 20)
+    page_number = request.GET.get('page')
+    page_obj = Paginator.get_page(paginator, page_number)
+
     context = {'form': transactions_filtered.form,
-               'transactions': transactions_filtered.qs.order_by('-id')}
+               'transactions': page_obj}
 
     return render(request, "history.html", context)
 
@@ -50,7 +49,6 @@ def add_expense(request):
             new_transaction.save()
             context = {'transaction': new_transaction}
             return render(request, 'partials/transaction.html', context)
-
     return render(request, 'partials/form.html', {'form': RegisterNewTransactionFrom()})
 
 
