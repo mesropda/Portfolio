@@ -16,8 +16,3 @@ class TransactionFilter(django_filters.FilterSet):
             'source': ['exact'],
             # 'date': ['exact', 'range']
         }
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.filters['amount'].widget.attrs.update(
-    #         {'class': 'form_input_register'})

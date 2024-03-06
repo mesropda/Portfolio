@@ -48,3 +48,25 @@ class RegisterNewTransactionFrom(forms.ModelForm):
 # class TransactionFilterForm(forms.Form):
 #     transaction_type = forms.ChoiceField(choices=TRANSACTION_CHOICES, widget=forms.Select(
 #         attrs={'class': 'form_input_register'}))
+
+
+MONTH_CHOICES = (
+    ("--------", "--------"),
+    ("1", "Jan"),
+    ("2", "Feb"),
+    ("3", "March"),
+    ("4", "Apr"),
+    ("5", "May"),
+    ("6", "Jun"),
+    ("7", "Jul"),
+    ("8", "Aug"),
+    ("9", "Sep"),
+    ("10", "Oct"),
+    ("11", "Nov"),
+    ("12", "Dec")
+)
+
+
+class MonthlyTransactionsForm(forms.Form):
+    month = forms.ChoiceField(choices=MONTH_CHOICES, widget=forms.Select(
+        attrs={'class': 'form_input_register'}))

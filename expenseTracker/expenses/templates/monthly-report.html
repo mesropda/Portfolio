@@ -1,22 +1,52 @@
 {%extends 'base.html'%}
 
 {%block content%}
+<style>
+    .form_login {
+        width: 80%;
+        margin-top: -200px;
+        font-size: 17px;
+        font-family: Verdana;
+        color: white;
+        /*border: 1px solid white;*/
+    }
 
-
+    .div-pie {
+        margin-top: -100px;
+        width: 80%;
+    }
 </style>
+
+
 <br>
 <h1 class="welcome-txt">Welcome to Monthly report page</h1>
-{%if messages%}
-<br>
-{% for message in messages %}
-<div class="message_alert" role="alert">
-    {{message}}
-    <br>
-</div>
-{% endfor %}
-{%endif%}
 
 
 {% include 'sidebar.html' %}
+
+<form method="POST" class="form_login align_right">{%csrf_token%}
+    {{form.as_p}}
+    <button type="submit" class="btn btn_small btn-color-green" value="Filter">Filter</button>
+</form>
+
+<div class="div-pie align_right">
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
+
+    {{chart|safe}}
+</div>
+
+
+
+
+
+
 
 {%endblock%}
