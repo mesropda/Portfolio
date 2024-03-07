@@ -1,0 +1,44 @@
+{% load widget_tweaks %}
+
+<form hx-post="{% url 'expenses:submit-edit-expense' pk=transaction.pk %}" hx-target="#transaction-list" hx-swap="afterbegin"
+    hx-on="htmx:afterRequest: this.remove()" hx-trigger="click from:#update">{%csrf_token%}
+    <div class="inline">
+        <div>
+            <select class="form_input_select col-sm-12">
+                <option disabled selected>{{transaction.transaction_type}}</option>
+                <option value="Deposit">Deposit</option>
+                <option value="Withdrawal">Withdrawal</option>
+            </select>
+        </div>
+        <div>
+            {% render_field form.amount placeholder="Sum" value=transaction.amount class="form_input col-sm-8"%}
+        </div>
+        <div>
+            <select class="form_input_select col-sm-15">
+                <option disabled selected>{{transaction.category}}</option>
+                <option value="House">House</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Necessities">Necessities</option>
+                <option value="Bills">Bills</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div>
+            <select class="form_input_select col-sm-12">
+                <option disabled selected>{{transaction.source}}</option>
+                <option value="My account">My account</option>
+                <option value="Salary">Salary</option>
+                <option value="Gov_Social">Gov_Social</option>
+                <option value="Business_Profit">Business_Profit</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="button" class="btn-small btn-danger" hx-on="click: this.closest('form').remove() ">Cancel</button>
+        </div>
+    </div>
+</form>

@@ -1,22 +1,29 @@
-<table class="table table-light table-striped table-hover table-sm table-bordered">
-    <thead class=>
-        <tr>
-            <th scope="col"> Transaction type </th>
-            <th scope="col"> Amount </th>
-            <th scope="col"> Category </th>
-            <th scope="col"> Source </th>
-            <th scope="col"> Date </th>
-        </tr>
-    </thead>
-    <tboby>
-        {% for transaction in transactions%}
-        <tr>
-            <td> {{transaction.transaction_type}} </td>
-            <td> {{transaction.amount}} </td>
-            <td> {{transaction.category}} </td>
-            <td> {{transaction.source}} </td>
-            <td> {{transaction.date}} </td>
-        </tr>
-        {% endfor %}
-    </tboby>
-</table>
+<form method="POST" action="{% url 'expenses:edit-expense' %}">{%csrf_token%}
+    <button type="submit" class="btn btn_size_10 btn-color-green align_right">Edit</button>
+    <table class="table table-light table-striped table-hover table-sm table-bordered">
+        <thead class=>
+            <tr>
+                <th scope="col"> Transaction type </th>
+                <th scope="col"> Amount </th>
+                <th scope="col"> Category </th>
+                <th scope="col"> Source </th>
+                <th scope="col"> Date </th>
+                <th scope="col"> Edit </th>
+            </tr>
+        </thead>
+        <tboby>
+            {% for transaction in transactions%}
+            <tr>
+                <td> {{transaction.transaction_type}} </td>
+                <td> {{transaction.amount}} </td>
+                <td> {{transaction.category}} </td>
+                <td> {{transaction.source}} </td>
+                <td> {{transaction.date}} </td>
+                <td> {{transaction.id}} </td>
+                <td> <input type="checkbox" name="selected_items" value="{{transaction.id}}"> </td>
+            </tr>
+            {% endfor %}
+        </tboby>
+    </table>
+
+</form>

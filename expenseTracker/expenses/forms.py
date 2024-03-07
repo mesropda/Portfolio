@@ -30,7 +30,7 @@ TRANSACTION_CHOICES = (
 )
 
 
-class RegisterNewTransactionFrom(forms.ModelForm):
+class TransactionFrom(forms.ModelForm):
     transaction_type = forms.ChoiceField(choices=TRANSACTION_CHOICES, widget=forms.Select(
         attrs={'class': 'form_input_register'}))
     amount = forms.IntegerField(widget=forms.NumberInput(
@@ -48,7 +48,6 @@ class RegisterNewTransactionFrom(forms.ModelForm):
 # class TransactionFilterForm(forms.Form):
 #     transaction_type = forms.ChoiceField(choices=TRANSACTION_CHOICES, widget=forms.Select(
 #         attrs={'class': 'form_input_register'}))
-
 
 MONTH_CHOICES = (
     ("--------", "--------"),

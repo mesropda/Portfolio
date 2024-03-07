@@ -3,7 +3,8 @@ from .models import Transactions
 from tracker.views import check_if_user_loggedin
 from django.shortcuts import render
 from django.contrib import messages
-from .forms import RegisterNewTransactionFrom, MonthlyTransactionsForm
+from django.shortcuts import get_object_or_404, redirect
+from .forms import TransactionFrom, MonthlyTransactionsForm
 from django.core.paginator import Paginator
 import calendar
 
@@ -17,7 +18,7 @@ import plotly.express as px
 def user_home_page(request):
     user = check_if_user_loggedin(request)
     user_transactions = Transactions.objects.filter(user=user)
-    context = {'form': RegisterNewTransactionFrom(),
+    context = {'form': TransactionFrom(),
                'transactions': user_transactions.order_by('-id')[:10]}
     return render(request, "index.html", context)
 
@@ -42,7 +43,6 @@ def monthly_report(request):
     if request.method == "POST":
         form = MonthlyTransactionsForm(request.POST)
         if form.is_valid() and form.cleaned_data['month'] != '--------':
-            print(f"!!!!!!!!!!{form.cleaned_data['month']}")
             transactions = Transactions.objects.filter(
                 user=user, date__month=form.cleaned_data['month'])
 
@@ -104,7 +104,6 @@ def history(request):
 
     context = {'form': transactions_filtered.form,
                'transactions': page_obj}
-
     return render(request, "history.html", context)
 
 # function for adding a new expense in user_home_page view
@@ -113,7 +112,7 @@ def history(request):
 def add_expense(request):
     if request.method == 'POST':
         user = check_if_user_loggedin(request)
-        form = RegisterNewTransactionFrom(request.POST or None)
+        form = TransactionFrom(request.POST or None)
         if form.is_valid():
             new_transaction = Transactions(
                 transaction_type=form.cleaned_data['transaction_type'], amount=form.cleaned_data['amount'], category=form.cleaned_data['category'], source=form.cleaned_data['source'])
@@ -121,7 +120,53 @@ def add_expense(request):
             new_transaction.save()
             context = {'transaction': new_transaction}
             return render(request, 'partials/transaction.html', context)
-    return render(request, 'partials/form.html', {'form': RegisterNewTransactionFrom()})
+    return render(request, 'partials/form.html', {'form': TransactionFrom()})
+
+
+def edit_expense(request):
+    if request.method == 'POST':
+        print("111111")
+        selected_ids = request.POST.getlist('selected_items')
+        if len(selected_ids) != 0:
+            selected_transactions = []
+            form = TransactionFrom(request.POST or None)
+            for id in selected_ids:
+                obj = get_object_or_404(Transactions, pk=id)
+                selected_transactions.append(obj)
+            context = {'form': form, 'transactions': selected_transactions}
+            return render(request, 'edit_expense.html', context)
+        else:
+            return history(request)
+
+
+def submit_edit_expense(request, pk):
+    obj = Transactions.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = TransactionFrom(request.POST, instance=obj)
+        print(obj.amount)
+        if form.is_valid():
+            form.save()
+            context = {'transaction': obj}
+            return render(request, 'partials/transaction.html', context)
+    else:
+        form = TransactionFrom()
+    return render(request, 'partials/form_edit_expense.html', {'form': form})
+
+
+def delete_expense(request):
+    print("!!!!!!!")
+    if request.method == 'POST':
+        print("111111")
+        selected_ids = request.POST.getlist('selected_items')
+        print(len(selected_ids))
+        if len(selected_ids) != 0:
+            print("2222")
+            for id in selected_ids:
+                obj = get_object_or_404(Transactions, pk=id)
+                obj.delete()
+            return history(request)
+        else:
+            return history(request)
 
 
 def vew_user_transactions(request):
