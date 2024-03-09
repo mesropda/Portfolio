@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserChangeForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.sessions.models import Session
-
+from django.utils.datastructures import MultiValueDictKeyError
+from django.core.mail import send_mail
+from django.conf import settings
 from .forms import RegisterUserForm
 from .models import Contact
 from .models import UserProfile
@@ -24,8 +25,16 @@ from .models import UserProfile
 
 
 def home_page(request):
-    # index_reset(request)
+
     return render(request, "home.html", {})
+
+
+def reset_password_sent(request):
+    return render(request, "reset_password_sent.html", {})
+
+
+def reset_password_complete(request):
+    return render(request, "reset_password_complete.html", {})
 
 
 def about_us(request):
@@ -76,7 +85,11 @@ def user_profile(request):
                 user.user.username = request.POST['username']
                 user.user.first_name = request.POST['first_name']
                 user.user.last_name = request.POST['last_name']
-                user.profession = request.POST['pofession']
+                user.user.email = request.POST['email']
+                try:
+                    user.profession = request.POST['profession']
+                except MultiValueDictKeyError:
+                    pass
                 user.savings = request.POST['savings']
                 user.income = request.POST['income']
                 user.user.save()
@@ -107,8 +120,6 @@ def login_user(request):
 
 def logout_user(request):
     request.session['is_logged'] = False
-    # print(f"The LOGÓUT user ID is {request.session['user_id']}")
-    # del request.session['user_id']
     logout(request)
     messages.success(request, 'Successfully logged out')
     return redirect('tracker:home')
@@ -132,6 +143,16 @@ def register_user(request):
             password = form.cleaned_data['password1']
             user = authenticate(username=username,
                                 password=password)
+
+            send_mail(
+                'Registration confirmation',
+                f'Thank you {
+                    user.first_name} for registergin in expense tracker',
+                settings.EMAIL_HOST_USER,
+                [user.email],
+                fail_silently=False,
+            )
+
             login(request, user)
             request.session['is_logged'] = True
             user_id = request.user.id
@@ -145,5 +166,5 @@ def register_user(request):
     return render(request, "register_user.html", {'form': form})
 
 
-def user_home_page(request):
-    return render(request, "user_home_page.html", {})
+# def user_home_page(request):
+#     return render(request, "user_home_page.html", {})

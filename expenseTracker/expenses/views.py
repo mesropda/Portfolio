@@ -85,7 +85,8 @@ def piechart(categories):
 
     fig.update_layout(title={'xanchor': 'center', 'x': 0.5},
                       width=810, height=810)
-    fig.update_traces(textposition='inside', textinfo='label+percent')
+    fig.update_traces(textposition='inside',
+                      textinfo='label+percent')
 
     chart = fig.to_html
     return chart

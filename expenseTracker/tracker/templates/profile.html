@@ -41,20 +41,24 @@
 <dif class="user-profile">
     <form class="profile" method=POST>{% csrf_token %}
         <label class="form-label" for="">UserName</label>
-        <input class="form_input" type="text" name="username" value={{user.username}}>
+        <br>
+        <input class="form_input width_100" type="text" name="username" value={{user.username}}>
         <br>
         <br>
         <label class="form-label" for="">First Name</label>
-        <input class="form_input" type="text" name="first_name" value={{user.first_name}}>
+        <br>
+        <input class="form_input width_100" type="text" name="first_name" value={{user.first_name}}>
         <br>
         <br>
         <label class="form-label" for="">Last Name</label>
-        <input class="form_input" type="text" name="last_name" value={{user.last_name}}>
+        <br>
+        <input class="form_input width_100" type="text" name="last_name" value={{user.last_name}}>
         <br>
         <br>
         <label class="form-label" for="">Ocupation</label>
-        <select class="form_input" name="pofession">
-            <option value="Current" disabled selected>{{userProfile.profession}}</option>
+        <br>
+        <select class="form_input width_100" name="profession">
+            <option disabled selected>{{userProfile.profession}}</option>
             <option value="Employee">Employee</option>
             <option value="Business">Business</option>
             <option value="Student">Student</option>
@@ -63,22 +67,26 @@
         <br>
         <br>
         <label class="form-label" for="">Monthly income</label>
-        <input class="form_input" type="number" name="income" value={{userProfile.income}}>
+        <br>
+        <input class="form_input width_100" type="number" name="income" value={{userProfile.income}}>
         <br>
         <br>
         <label class="form-label" for="">Savings amount</label>
-        <input class="form_input" type="number" name="savings" value={{userProfile.savings}}>
+        <br>
+        <input class="form_input width_100" type="number" name="savings" value={{userProfile.savings}}>
         <br>
         <br>
         <label class="form-label" for="">Email</label>
-        <input class="form_input" type="email" name="email" value={{user.email}}>
+        <br>
+        <input class="form_input width_100" type="email" name="email" value={{user.email}}>
         <br>
         <br>
         <label class="form-label" for="">Upload a profile picture</label>
+        <br>
         <input class="form-label" type="file" name="profile_pic" value={{user.pic}}>
         <br>
         <br>
-        <button class="btn" type="submit">Update</button>
+        <button class="btn btn_size_100 btn-color-green" type="submit">Update</button>
     </form>
 </dif>
 

@@ -9,7 +9,7 @@
         resize: vertical;
         overflow: auto;
         width: 98%;
-        min-height: 120px;
+        min-height: 140px;
         display: block;
         padding: 10px;
         border-radius: 15px;
@@ -17,11 +17,12 @@
     }
 </style>
 
-<h1 class="welcome-txt">Welcome to Contact Us Page</h1>
+<h1 class="welcome-txt align_center">Contact Us</h1>
+<p class="form-label align_center font_size_18">We're here for you: Connect us for any questions or concerns.</p>
 {%if messages%}
 <br>
 {% for message in messages %}
-<div class="message_alert" role="alert">
+<div class="message_alert align_center color-green" role="alert">
     {{message}}
     <br>
 </div>
@@ -29,7 +30,7 @@
 {%endif%}
 <div class="contact-div">
     <br>
-    <form method="POST" class="form_login">{%csrf_token%}
+    <form method="POST" class="form_login width_70">{%csrf_token%}
         <label class="form-label" for="">First Name</label>
         <br>
         <input class="form_input" type="text" placeholder="First Name" name="first_name">
@@ -47,11 +48,10 @@
         <br>
         <label class="form-label" for="">Message</label>
         <br>
-        <textarea class="form_textarea" placeholder="Type your message here" resize="none" id=""
-            name="message"></textarea>
+        <textarea class="form_textarea" placeholder="Type your message here" resize="none" id="" name="message"></textarea>
         <br>
         <br>
-        <button type="submit" class="btn">Send</button>
+        <button type="submit" class="btn btn-color-pink">Send</button>
     </form>
 
 </div>

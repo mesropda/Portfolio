@@ -12,14 +12,13 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 
-    <script src="https://unpkg.com/htmx.org@1.9.10"
-        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
         crossorigin="anonymous"></script>
 
     <style>
         .container {
             width: 50vw;
-            border: 1px solid white;
+            /*border: 1px solid white;*/
             margin-top: 10px;
             margin-left: auto;
             margin-right: auto;
@@ -55,10 +54,7 @@
 
         .message_alert {
             background-color: #0E1225;
-            width: 390px;
-            height: 20px;
             margin: auto;
-
             color: #EF23AF;
             font-size: 14px;
             font-family: Verdana;
@@ -73,6 +69,7 @@
             cursor: pointer;
             font-weight: bold;
             font-size: 19px;
+            transition: transform 0.1s ease;
         }
 
         .btn-small {
@@ -99,8 +96,8 @@
         }
 
         .btn-color-green:hover {
-
-            background-color: rgb(12, 229, 92)
+            border: 1px solid rgb(8, 178, 70);
+            background-color: rgb(8, 178, 70);
         }
 
 
@@ -108,6 +105,11 @@
         .btn-color-pink {
             border: 1px solid #EF23AF;
             background-color: #EF23AF;
+        }
+
+        .btn-color-pink:hover {
+            border: 1px solid rgb(166, 6, 113);
+            background-color: rgb(166, 6, 113)
         }
 
         .btn_size_100 {
@@ -134,9 +136,18 @@
             float: left;
         }
 
+        .form_login {
+            padding: 40px;
+            background-color: #14172f;
+            width: 40%;
+            margin: auto;
+            border: 1px solid #3f4457;
+            border-radius: 7px;
+        }
+
         .form_input {
-            margin-top: 2px;
-            margin-bottom: 2px;
+            margin-top: -4px;
+            margin-bottom: -4px;
             padding-right: 10px;
             padding-left: 10px;
             padding-top: 3px;
@@ -148,6 +159,8 @@
         }
 
         .form_input_select {
+            margin-top: -4px;
+            margin-bottom: -4px;
             padding-right: 10px;
             padding-left: 10px;
             padding-top: 5px;
@@ -158,8 +171,16 @@
             font-family: Verdana;
         }
 
-        .input_width_100 {
-            width: 100;
+        .width_100 {
+            width: 100%;
+        }
+
+        .width_70 {
+            width: 70%;
+        }
+
+        .width_50 {
+            width: 50%;
         }
 
         .form_input_register {
@@ -175,10 +196,18 @@
         }
 
         .form-label {
-            font-size: 14px;
+            font-size: 15px;
             font-family: Verdana;
-            color: white;
+            color: #D4D8E9;
             list-style-type: none;
+        }
+
+        .font_size_18 {
+            font-size: 18px;
+        }
+
+        .color-green {
+            color: #55F8B4
         }
 
         .helptext {
@@ -188,6 +217,11 @@
         .inline {
             display: flex;
             justify-content: space-around;
+        }
+
+        .align_center {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>

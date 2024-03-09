@@ -7,16 +7,6 @@
 </head>
 
 <style>
-    .form_login {
-        width: 50vw;
-        height: 500px;
-        margin: auto;
-        font-size: 14px;
-        font-family: Verdana;
-        color: white;
-        /*border: 1px solid white;*/
-    }
-
     .form_input {
 
         margin-left: 0;
@@ -49,9 +39,9 @@
 {%endif%}
 
 
-<form action="{%url 'tracker:register'%}" method="POST" class="form_login">{%csrf_token%}
+<form action="{%url 'tracker:register'%}" method="POST" class="form_login form-label width_70">{%csrf_token%}
     {{form.as_p}}
-    <button class="btn" type="submit">SIGN UP</button>
+    <button class="btn btn-color-pink" type="submit">SIGN UP</button>
 
 </form>
 {%endblock%}
