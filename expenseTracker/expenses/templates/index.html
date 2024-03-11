@@ -23,14 +23,14 @@
 
     .index-div {
         margin-left: auto;
-        margin-top: -45px;
+        margin-top: -35px;
         width: 80%;
         margin-bottom: 20px;
     }
 
     .index-div-col {
         margin-left: auto;
-        margin-top: -170px;
+        margin-top: -95px;
         width: 80%;
         margin-bottom: 20px;
     }
@@ -38,7 +38,7 @@
     .transaction {
         width: 80%;
         float: right;
-        margin-top: 38px;
+        margin-top: 20px;
         display: flex;
         flex-direction: row;
     }
@@ -49,9 +49,20 @@
         list-style-type: none;
         text-align: center;
     }
+
+    .div-info {
+        display: flex;
+        flex-direction: row;
+        gap: 20%;
+        width: 79.9%;
+        float: right;
+        margin-top: 40px;
+    }
+
+
+    }
 </style>
-<br>
-<h1 class="welcome-txt">Welcome to Dashboard page</h1>
+<h1 class="welcome-txt">Welcome to Dashboard</h1>
 {%if messages%}
 <br>
 {% for message in messages %}
@@ -62,9 +73,20 @@
 {% endfor %}
 {%endif%}
 
+<div class="div-info">
+    <div>
+        <p class="form-label font_size_25 color-green">Total savings:{{saving}}</p>
+    </div>
+    <div>
+        <p class="form-label font_size_25">Total spent in {{month}}:{{current_month}}</p>
+    </div>
+
+
+</div>
+
+
 <div class="transaction">
-    <button class="btn-wallet" type="button" hx-get="{% url 'expenses:add-expense' %}" hx-target="#expense-form"
-        hx-swap="beforeend">Add an expense</button>
+    <button class="btn-wallet" type="button" hx-get="{% url 'expenses:add-expense' %}" hx-target="#expense-form" hx-swap="beforeend">Add an expense</button>
     <br>
 
 </div>
@@ -81,7 +103,7 @@
 
 <div class="my-4">
     <br>
-    <button type="button" class="btn btn_size_80 align_right btn-color-green" id="add-all">Add All</button>
+    <button type="button" class="btn btn_size_80 align_right btn-color-green" id="add-all">Save</button>
 </div>
 
 <br>

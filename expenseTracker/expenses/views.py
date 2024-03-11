@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .forms import TransactionFrom, MonthlyTransactionsForm
 from django.core.paginator import Paginator
 import calendar
-
+import datetime
 import plotly.express as px
 
 
@@ -18,8 +18,22 @@ import plotly.express as px
 def user_home_page(request):
     user = check_if_user_loggedin(request)
     user_transactions = Transactions.objects.filter(user=user)
+    todayDate = datetime.date.today()
+    start_date = todayDate.replace(day=1)
+    month_name = calendar.month_name[start_date.month]
+
+    currentMonthExpenses = user_transactions.filter(date__year__gte=start_date.year,
+                                                    date__month__gte=start_date.month)
+    currentMonthTotal = 0
+    for currentMonthExpense in currentMonthExpenses:
+        currentMonthTotal += currentMonthExpense.amount
+
     context = {'form': TransactionFrom(),
-               'transactions': user_transactions.order_by('-id')[:10]}
+               'transactions': user_transactions.order_by('-id')[:10],
+               'current_month': currentMonthTotal,
+               'month': month_name,
+               'saving': user.savings}
+
     return render(request, "index.html", context)
 
 # view monthly report page
@@ -126,7 +140,6 @@ def add_expense(request):
 
 def edit_expense(request):
     if request.method == 'POST':
-        print("111111")
         selected_ids = request.POST.getlist('selected_items')
         if len(selected_ids) != 0:
             selected_transactions = []
@@ -155,13 +168,10 @@ def submit_edit_expense(request, pk):
 
 
 def delete_expense(request):
-    print("!!!!!!!")
     if request.method == 'POST':
-        print("111111")
         selected_ids = request.POST.getlist('selected_items')
         print(len(selected_ids))
         if len(selected_ids) != 0:
-            print("2222")
             for id in selected_ids:
                 obj = get_object_or_404(Transactions, pk=id)
                 obj.delete()

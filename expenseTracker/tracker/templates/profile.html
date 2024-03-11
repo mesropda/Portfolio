@@ -2,19 +2,6 @@
 
 {%block content%}
 
-<h1 class="welcome-txt">Welcome to Profile Page!</h1>
-<br>
-
-{%if messages%}
-<br>
-{% for message in messages %}
-<div class="message_alert" role="alert">
-    {{message}}
-    <br>
-</div>
-{% endfor %}
-{%endif%}
-
 
 <style>
     .profile {
@@ -38,6 +25,20 @@
         width: 98%;
     }
 </style>
+
+<h1 class="welcome-txt align_center">Welcome to Profile Page!</h1>
+
+{%if messages%}
+{% for message in messages %}
+<div class="message_alert align_center" role="alert">
+    {{message}}
+    <br>
+</div>
+{% endfor %}
+{%endif%}
+
+
+
 <dif class="user-profile">
     <form class="profile" method=POST>{% csrf_token %}
         <label class="form-label" for="">UserName</label>

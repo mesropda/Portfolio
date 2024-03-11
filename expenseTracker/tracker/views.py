@@ -94,6 +94,8 @@ def user_profile(request):
                 user.income = request.POST['income']
                 user.user.save()
                 user.save()
+                messages.success(
+                    request, "The profile has been updated successfully!")
         return render(request, "profile.html", context)
 
 
@@ -121,6 +123,9 @@ def login_user(request):
 def logout_user(request):
     request.session['is_logged'] = False
     logout(request)
+    if request.session.has_key('is_logged'):
+        user_id = request.session['user_id']
+        del (request.session['user_id'])
     messages.success(request, 'Successfully logged out')
     return redirect('tracker:home')
 
@@ -158,7 +163,7 @@ def register_user(request):
             user_id = request.user.id
             print(f"The login ID is {user_id}")
             request.session['user_id'] = user_id
-            messages.success(request, ("Welcome to expense tracker"))
+            # messages.success(request, ("Welcome to expense tracker"))
             return redirect('expenses:index')
     else:
         form = RegisterUserForm()

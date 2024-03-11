@@ -1,8 +1,8 @@
 {% load widget_tweaks %}
 
-<form hx-post="{% url 'expenses:add-expense' %}" hx-target="#transaction-list" hx-swap="afterbegin"
-    hx-on="htmx:afterRequest: this.remove()" hx-trigger="click from:#add-all">{%csrf_token%}
-    <div class="inline">
+<form hx-post="{% url 'expenses:add-expense' %}" hx-target="#transaction-list" hx-swap="afterbegin" hx-on="htmx:afterRequest: this.remove()"
+    hx-trigger="click from:#add-all">{%csrf_token%}
+    <div class="inline marg_top">
         <div>
             {% render_field form.transaction_type class="form_input_select col-sm-12" %}
         </div>
@@ -17,8 +17,7 @@
         </div>
 
         <div>
-            <button type="button" class="btn-small btn-danger"
-                hx-on="click: this.closest('form').remove() ">Cancel</button>
+            <button type="button" class="btn-small btn-danger" hx-on="click: this.closest('form').remove() ">Cancel</button>
         </div>
     </div>
 </form>
