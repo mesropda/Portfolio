@@ -6,15 +6,16 @@
 
 </style>
 
-<h1 class="welcome-txt">Welcome to Expense Tracker Home Page</h1>
-{%if messages%}
-<br>
-{% for message in messages %}
-<div class="message_alert" role="alert">
-    {{message}}
+<div>
+    <h2 class="welcome-txt">Welcome to Expense Tracker Home Page</h2>
+    {%if messages%}
     <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
+    {% endfor %}
+    {%endif%}
 </div>
-{% endfor %}
-{%endif%}
-
 {%endblock%}

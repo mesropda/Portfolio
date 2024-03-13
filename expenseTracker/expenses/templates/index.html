@@ -29,8 +29,8 @@
     }
 
     .index-div-col {
+        margin-top: -80px;
         margin-left: auto;
-        margin-top: -95px;
         width: 80%;
         margin-bottom: 20px;
     }
@@ -58,11 +58,10 @@
         float: right;
         margin-top: 40px;
     }
-
-
-    }
 </style>
-<h1 class="welcome-txt">Welcome to Dashboard</h1>
+<h2 class="welcome-txt align_center">Welcome to your dashboard</h2>
+<br>
+<p class="form-label">Here you can add new expenses, see the total savings and expenses during the current month as well as the last 10 transactions.</p>
 {%if messages%}
 <br>
 {% for message in messages %}
@@ -83,7 +82,6 @@
 
 
 </div>
-
 
 <div class="transaction">
     <button class="btn-wallet" type="button" hx-get="{% url 'expenses:add-expense' %}" hx-target="#expense-form" hx-swap="beforeend">Add an expense</button>
@@ -106,8 +104,9 @@
     <button type="button" class="btn btn_size_80 align_right btn-color-green" id="add-all">Save</button>
 </div>
 
-<br>
+<br><br>
 <div class="div-recent-expenses">
+
     <ul class="form-label " id="transaction-list">
         {% for transaction in transactions %}
         {% include 'partials/transaction.html' %}

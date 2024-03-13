@@ -17,8 +17,7 @@
     }
 </style>
 
-<h1 class="welcome-txt align_center">Contact Us</h1>
-<p class="form-label align_center font_size_18">We're here for you: Connect us for any questions or concerns.</p>
+
 {%if messages%}
 <br>
 {% for message in messages %}
@@ -29,8 +28,11 @@
 {% endfor %}
 {%endif%}
 <div class="contact-div">
-    <br>
+    <br><br><br><br>
+
     <form method="POST" class="form_login width_70">{%csrf_token%}
+        <h2 class="welcome-txt align_center">Contact Us</h2>
+        <p class="form-label align_center font_size_18">We're here for you: Connect us for any questions or concerns.</p>
         <label class="form-label" for="">First Name</label>
         <br>
         <input class="form_input" type="text" placeholder="First Name" name="first_name">

@@ -7,7 +7,7 @@
     .form_monyhly_filter {
         width: 50%;
         margin-right: 25%;
-        margin-top: -215px;
+        margin-top: -200px;
         font-size: 17px;
         font-family: Verdana;
         color: white;
@@ -25,21 +25,18 @@
     }
 </style>
 
-<h1 class="welcome-txt">Welcome to Monthly report page</h1>
-
+<h2 class="welcome-txt align_center">Welcome to Monthly report</h2>
 
 {% include 'sidebar.html' %}
 
 <form method="POST" class="form_monyhly_filter align_right">{%csrf_token%}
+    <p class="form-label">Please select the month to see transactions in form of a pie chart.</p>
+    <br>
     <label class="form-label">Month</label>
     <div class="aaa">
-        <!--<div>{{form.as_p}}</div>-->
         <div class="width_50">{% render_field form.month class="form_input_select width_100" %}</div>
         <div class="width_50"><button type="submit" class="btn-small btn-color-green" value="Filter">Filter</button></div>
     </div>
-</form>
-
-<div class="div-pie align_right">
     {%if messages%}
     <br>
     {% for message in messages %}
@@ -49,6 +46,10 @@
     </div>
     {% endfor %}
     {%endif%}
+</form>
+
+<div class="div-pie align_right">
+
 
     {{chart|safe}}
 </div>

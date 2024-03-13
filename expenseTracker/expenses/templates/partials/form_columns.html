@@ -19,26 +19,29 @@
 
     .div-col li {
         float: left;
-        margin-right: 7%;
+
     }
 
     .div-col2 li {
         float: left;
-        margin-right: 21%;
+        margin-left: -23%;
     }
 </style>
 
 <br>
 <div class="inline">
-    <div class=" div-col ">
-        <li class="form-label">{{form.transaction_type.label}}</li>
-        <li class="form-label">{{form.amount.label}}</li>
-
+    <div class=" div-col">
+        <li class="form-label font_size_to_13">{{form.transaction_type.label}}</li>
+    </div>
+    <div class=" div-col2">
+        <li class="form-label font_size_to_13">{{form.amount.label}}</li>
     </div>
 
-    <div class=" div-col2 ">
-        <li class="form-label">{{form.category.label}}</li>
-        <li class="form-label">{{form.source.label}}</li>
+    <div class=" div-col">
+        <li class="form-label font_size_to_13">{{form.category.label}}</li>
+    </div>
+    <div class=" div-col2">
+        <li class="form-label font_size_to_13">{{form.source.label}}</li>
     </div>
 </div>
 

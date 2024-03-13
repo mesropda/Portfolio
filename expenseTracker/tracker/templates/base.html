@@ -11,261 +11,65 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="../static/style.css">
 
     <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
         crossorigin="anonymous"></script>
 
     <style>
-        .container {
-            width: 50vw;
-            /*border: 1px solid white;*/
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            font-family: Verdana;
-            padding: 3px;
-        }
-
-        body {
-            background-color: #0E1225;
-        }
-
-        .welcome-txt {
-            margin-left: 5px;
-            color: white;
-        }
-
-        .nav-el li a {
-            color: rgb(211, 206, 206);
-            text-decoration: none;
-            font-size: 20px;
-            font-family: Verdana;
-        }
-
-        .nav-el li {
-            float: left;
-            margin-right: 22px;
-            list-style-type: none;
-        }
-
-        .nav-el li a:hover {
-            color: white;
-        }
-
-        .message_alert {
-            background-color: #0E1225;
-            margin: auto;
-            color: #EF23AF;
-            font-size: 14px;
-            font-family: Verdana;
-        }
-
-        .btn {
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 19px;
-            transition: transform 0.1s ease;
-        }
-
-        .btn-small {
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 4px;
-            padding-bottom: 4px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 15px;
-            border: 1px solid red;
-        }
-
-        .btn-color-green {
-            border: 1px solid #55F8B4;
-            background-color: #55F8B4;
-            color: black;
-        }
-
-        .btn-color-pink {
-            border: 1px solid #EF23AF;
-            background-color: #EF23AF;
-        }
-
-        .btn-color-green:hover {
-            border: 1px solid rgb(8, 178, 70);
-            background-color: rgb(8, 178, 70);
-        }
 
 
-
-        .btn-color-pink {
-            border: 1px solid #EF23AF;
-            background-color: #EF23AF;
-        }
-
-        .btn-color-pink:hover {
-            border: 1px solid rgb(166, 6, 113);
-            background-color: rgb(166, 6, 113)
-        }
-
-        .btn_size_100 {
-            width: 100%;
-        }
-
-        .btn_size_80 {
-            width: 80%;
-        }
-
-        .btn_size_70 {
-            width: 70%;
-        }
-
-        .btn_size_10 {
-            width: 10%;
-        }
-
-        .align_right {
-            float: right;
-        }
-
-        .align_left {
-            float: left;
-        }
-
-        .form_login {
-            padding: 40px;
-            background-color: #14172f;
-            width: 40%;
-            margin: auto;
-            border: 1px solid #3f4457;
-            border-radius: 7px;
-        }
-
-        .form_input {
-            padding-right: 10px;
-            padding-left: 10px;
-            padding-top: 3px;
-            padding-bottom: 3px;
-            border-radius: 15px;
-            border: 1px solid white;
-            font-size: 17px;
-            font-family: Verdana;
-        }
-
-        .form_input_select {
-            padding-right: 10px;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 15px;
-            border: 1px solid white;
-            font-size: 17px;
-            font-family: Verdana;
-        }
-
-        .width_100 {
-            width: 100%;
-        }
-
-        .width_70 {
-            width: 70%;
-        }
-
-        .width_60 {
-            width: 60%;
-        }
-
-        .width_50 {
-            width: 50%;
-        }
-
-        .form_input_register {
-            padding-right: 10px;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 15px;
-            border: 1px solid white;
-            font-size: 17px;
-            font-family: Verdana;
-            width: 100%;
-        }
-
-        .form-label {
-            margin-top: -5px;
-            margin-bottom: -5px;
-            font-size: 15px;
-            font-family: Verdana;
-            color: #D4D8E9;
-            list-style-type: none;
-        }
-
-        .font_size_18 {
-            font-size: 18px;
-        }
-
-        .font_size_25 {
-            font-size: 25px;
-        }
-
-        .color-green {
-            color: #55F8B4
-        }
-
-        .helptext {
-            visibility: hidden;
-        }
-
-        .inline {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .align_center {
-            display: flex;
-            justify-content: center;
-        }
-
-        .marg_top {
-            margin-top: 3px;
     </style>
 </head>
 
-
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-    <div class="container">
+    <div class="content-wrapper">
+
         <header class="header">
-            <nav class="nav">
-                <ul class="nav-el">
-                    <li><a href="{%url 'tracker:home'%}">Home Page</a></li>
+            <div class="nav-container">
+                <nav class="nav">
+                    <ul class="nav-el">
+                        <li><a href="{%url 'tracker:home'%}">Home Page</a></li>
+                        <li><a href="{%url 'tracker:contact-us'%}">Contact us</a></li>
+                        <li><a href="{%url 'tracker:about-us'%}">About us</a></li>
+                        {% if user.is_authenticated %}
+
+                        {% else %}
+                        <li><a href="{%url 'tracker:log-in'%}">Log In</a></li>
+                        {% endif%}
+                    </ul>
+                    <ul class="nav-el">
+                        {% if user.is_authenticated %}
+                        <li><a href="{%url 'tracker:profile'%}">MyProfile({{user.username}})</a></li>
+                        <li><a href="{%url 'expenses:index'%}">Dashboard</a></li>
+                        <li><a href="{%url 'tracker:log-out'%}">LogOut</a></li>
+
+                        {% endif%}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="container">
+            {%block content%}
+
+            {%endblock%}
+        </div>
+    </div>
+    </div>
+
+    <footer class="footer">
+        <div class="raw align_center">
+            <div>Copyright © 2024, All rights reserved!</div>
+            <div>
+                <ul class="nav-footer-el">
                     <li><a href="{%url 'tracker:contact-us'%}">Contact us</a></li>
                     <li><a href="{%url 'tracker:about-us'%}">About us</a></li>
-                    {% if user.is_authenticated %}
-
-                    {% else %}
-                    <li><a href="{%url 'tracker:log-in'%}">Log In</a></li>
-                    {% endif%}
+                    <li><a href="{%url 'tracker:privacy-policy'%}">Privacy Policy</a></li>
                 </ul>
-                <ul class="nav-el">
-                    {% if user.is_authenticated %}
-                    <li><a href="{%url 'tracker:profile'%}">MyProfile({{user.username}})</a></li>
-                    <li><a href="{%url 'expenses:index'%}">Dashboard</a></li>
-                    <li><a href="{%url 'tracker:log-out'%}">LogOut</a></li>
-
-                    {% endif%}
-                </ul>
-            </nav>
-        </header>
-        <br>
-        {%block content%}
-
-        {%endblock%}
-
-    </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 
 </html>

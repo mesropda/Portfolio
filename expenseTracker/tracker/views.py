@@ -29,6 +29,10 @@ def home_page(request):
     return render(request, "home.html", {})
 
 
+def privacy_policy(request):
+    return render(request, "privacy_policy.html", {})
+
+
 def reset_password_sent(request):
     return render(request, "reset_password_sent.html", {})
 

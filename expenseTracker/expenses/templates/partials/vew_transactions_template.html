@@ -1,8 +1,8 @@
 <form method="POST">{%csrf_token%}
-    <button type="submit" formaction="{% url 'expenses:delete-expense' %}" onclick="checker()" class="btn btn_size_10 btn-danger align_right">Delete</button>
+    <button type="submit" formaction="{% url 'expenses:delete-expense' %}" onclick="checker()" class="btn btn_size_10 btn-danger align_right">Del</button>
     <button type="submit" formaction="{% url 'expenses:edit-expense' %}" class="btn btn_size_10 btn-color-pink align_right">Edit</button>
     <table class="table table-light table-striped table-hover table-sm table-bordered">
-        <thead class=>
+        <thead>
             <tr>
                 <th scope="col"> #ID </th>
                 <th scope="col"> Transaction type </th>

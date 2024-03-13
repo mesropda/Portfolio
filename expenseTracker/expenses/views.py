@@ -59,11 +59,11 @@ def monthly_report(request):
         if form.is_valid() and form.cleaned_data['month'] != '--------':
             transactions = Transactions.objects.filter(
                 user=user, date__month=form.cleaned_data['month'])
+            month_number = int(form.cleaned_data['month'])
+            month = calendar.month_name[month_number]
 
             if not transactions.exists():  # Check if there are records for the given month
-                month_number = int(form.cleaned_data['month'])
-                print(type(month_number))
-                month = calendar.month_name[month_number]
+
                 message = messages.success(request, "No records for "+month)
                 return render(request, "monthly-report.html", {'form': form})
 
@@ -75,7 +75,7 @@ def monthly_report(request):
                     single_category_total += current.amount
                     value = single_category_total
                 categories[key] = single_category_total
-            chart = piechart(categories)
+            chart = piechart(categories, month)
             context = {'form': form, 'chart': chart}
         else:
             context = {'form': form}
@@ -90,12 +90,12 @@ It acepts dictionary of categories and theyr corresponding amount during the mon
 return a cahrt in from of html'''
 
 
-def piechart(categories):
+def piechart(categories, month):
     labels = categories.keys()
     sizes = categories.values()
 
     fig = px.pie(values=sizes, names=labels,
-                 title='Expenses per category per month')
+                 title=f'Expenses per category in {month}')
 
     fig.update_layout(title={'xanchor': 'center', 'x': 0.5},
                       width=810, height=810)
