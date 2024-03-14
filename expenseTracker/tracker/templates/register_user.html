@@ -28,23 +28,23 @@
         font-family: Verdana;
     }
 </style>
+<div class="container">
+    <br>
+    {% if form.errors%}
+    <div class="message_alert ali align_center">
+        <p class="">There was en error with your submission, try again!</p>
+        <br />
+    </div>
+    {%endif%}
 
-<br>
-{% if form.errors%}
-<div class="message_alert ali align_center">
-    <p class="">There was en error with your submission, try again!</p>
-    <br />
+    <br><br><br>
+    <div class="form_login form-label width_70">
+        <h2 class="welcome-txt">Create an account</h2>
+        <form action="{%url 'tracker:register'%}" method="POST">{%csrf_token%}
+            {{form.as_p}}
+            <button class="btn btn-color-pink" type="submit">SIGN UP</button>
+        </form>
+    </div>
+    <br><br><br><br>
 </div>
-{%endif%}
-
-<br><br><br>
-<div class="form_login form-label width_70">
-    <h2 class="welcome-txt">Create an account</h2>
-    <form action="{%url 'tracker:register'%}" method="POST">{%csrf_token%}
-        {{form.as_p}}
-        <button class="btn btn-color-pink" type="submit">SIGN UP</button>
-    </form>
-</div>
-<br><br><br><br>
-
 {%endblock%}

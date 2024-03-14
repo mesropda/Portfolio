@@ -5,11 +5,10 @@
 
 .container {
     width: 60vw;
-    /*border: 1px solid white;*/
+    /*border: 1px solid red;*/
     margin-left: auto;
     margin-right: auto;
     font-family: Verdana;
-
 }
 
 .nav-container {
@@ -26,7 +25,6 @@ body {
     flex-direction: column;
     margin: 0;
     background-color: #0E1225;
-    /*background-image: url(../static/background.jpg)*/
 }
 
 .header {
@@ -239,7 +237,7 @@ body {
 }
 
 @media screen and (max-width: 1400px) {
-    .font_size_to_13 {
+    .font_size_13 {
         font-size: 13px;
     }
 }
@@ -264,6 +262,18 @@ body {
     width: 50%;
 }
 
+.width_30 {
+    width: 30%;
+}
+
+.width_25 {
+    width: 25%;
+}
+
+.width_20 {
+    width: 20%;
+}
+
 .font_size_15 {
     font-size: 15px;
 }
@@ -274,6 +284,12 @@ body {
 
 .font_size_25 {
     font-size: 25px;
+}
+
+@media screen and (max-width: 1400px) {
+    .font_size_25 {
+        font-size: 18px;
+    }
 }
 
 .color-green {
@@ -301,4 +317,8 @@ body {
 .raw {
     display: flex;
     flex-wrap: wrap;
+}
+
+.border {
+    border: 1px solid white;
 }

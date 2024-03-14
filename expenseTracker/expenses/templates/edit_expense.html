@@ -51,42 +51,45 @@
         text-align: center;
     }
 </style>
-<br>
-<h2 class="welcome-txt">Welcome to Expense Edit page</h2>
-{%if messages%}
-<br>
-{% for message in messages %}
-<div class="message_alert" role="alert">
-    {{message}}
+
+<div class="container">
     <br>
-</div>
-{% endfor %}
-{%endif%}
-
-
-{% include 'sidebar.html' %}
-
-<div class="index-div-col">
-    {% include 'partials/form_columns.html' %}
-</div>
-
-<div class="index-div" id="expense-form">
-    {% for transaction in transactions %}
-    {% include 'partials/form_edit_expense.html' %}
+    <h2 class="welcome-txt">Welcome to Expense Edit page</h2>
+    {%if messages%}
+    <br>
+    {% for message in messages %}
+    <div class="message_alert" role="alert">
+        {{message}}
+        <br>
+    </div>
     {% endfor %}
-</div>
+    {%endif%}
 
-<div class="my-4">
-    <br>
-    <button type="button" class="btn btn_size_80 align_right btn-color-green" id="update">Update</button>
-</div>
 
-<br>
-<div class="div-recent-expenses">
-    <ul class="form-label " id="transaction-list">
+    {% include 'sidebar.html' %}
+
+    <div class="index-div-col">
+        {% include 'partials/form_columns.html' %}
+    </div>
+
+    <div class="index-div" id="expense-form">
         {% for transaction in transactions %}
-        {% include 'partials/transaction.html' %}
+        {% include 'partials/form_edit_expense.html' %}
         {% endfor %}
-    </ul>
+    </div>
+
+    <div class="my-4">
+        <br>
+        <button type="button" class="btn btn_size_80 align_right btn-color-green" id="update">Update</button>
+    </div>
+
+    <br>
+    <div class="div-recent-expenses">
+        <ul class="form-label " id="transaction-list">
+            {% for transaction in transactions %}
+            {% include 'partials/transaction.html' %}
+            {% endfor %}
+        </ul>
+    </div>
 </div>
 {%endblock%}
